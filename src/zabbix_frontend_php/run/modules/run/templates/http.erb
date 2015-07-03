@@ -1,0 +1,9 @@
+<VirtualHost *:80>
+  DocumentRoot /usr/share/zabbix
+
+  <Directory "/usr/share/zabbix">
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+  </Directory>
+</VirtualHost>

@@ -8,6 +8,8 @@ ADD ./src /src
 
 RUN /src/entrypoint.sh build
 
+VOLUME ["/zabbix_frontend_php"]
+
 EXPOSE 80
 EXPOSE 443
 
