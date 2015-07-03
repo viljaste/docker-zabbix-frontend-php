@@ -1,17 +1,6 @@
-zabbixserver:
-  image: viljaste/zabbix_server:2.2-mysql
-  hostname: zabbixserver
+zabbixfrontendphp:
+  image: viljaste/zabbix_frontend_php:2.2-mysql
+  hostname: zabbixfrontendphp
   ports:
-    - "10051:10051"
-  links:
-    - mysqld
-mysqld:
-  image: fenomen/mysqld:latest
-  hostname: mysqld
-  volumes_from:
-    - mysqlddata
-mysqlddata:
-  image: fenomen/data:latest
-  hostname: mysqlddata
-  volumes:
-    - /mysqld
+    - "80:80"
+    - "443:443"

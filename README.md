@@ -1,4 +1,4 @@
-# docker-zabbix-web
+# docker-zabbix-frontend-php
 
 A [Docker](https://docker.com/) container for [Apache HTTP Server](http://httpd.apache.org/).
 
