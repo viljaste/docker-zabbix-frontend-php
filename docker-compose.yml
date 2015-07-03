@@ -5,4 +5,6 @@ zabbixfrontendphp:
     - "80:80"
     - "443:443"
   environment:
+    - SERVER_NAME=localhost
+    - PROTOCOLS=https,http
     - PHP_INI_TIMEZONE=UTC
