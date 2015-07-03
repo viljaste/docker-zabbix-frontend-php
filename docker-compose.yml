@@ -1,5 +1,5 @@
 zabbixfrontendphp:
-  image: viljaste/zabbix_frontend_php:2.2
+  image: viljaste/zabbix_frontend_php:latest
   hostname: zabbixfrontendphp
   ports:
     - "80:80"
