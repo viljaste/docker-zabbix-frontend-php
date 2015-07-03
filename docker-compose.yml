@@ -1,6 +1,8 @@
 zabbixfrontendphp:
-  image: viljaste/zabbix_frontend_php:2.2-mysql
+  image: viljaste/zabbix_frontend_php:2.2
   hostname: zabbixfrontendphp
   ports:
     - "80:80"
     - "443:443"
+  environment:
+    - PHP_INI_TIMEZONE=UTC

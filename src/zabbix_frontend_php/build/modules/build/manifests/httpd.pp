@@ -12,7 +12,7 @@ class build::httpd {
     ensure => absent
   }
 
-  file { '/etc/apache2/sites-enabled/000-default.conf':
+  file { '/etc/apache2/sites-enabled/000-default':
     ensure => absent
   }
 
