@@ -1,5 +1,5 @@
 zabbix-frontend-php:
-  image: dockerizedrupal/zabbix-frontend-php:0.1.4
+  image: dockerizedrupal/zabbix-frontend-php:0.1.5
   hostname: zabbix-frontend-php
   ports:
     - "80:80"
@@ -7,9 +7,10 @@ zabbix-frontend-php:
   volumes_from:
     - zabbix-frontend-php-data
   links:
+    - mysql
     - zabbix-server
 zabbix-frontend-php-data:
-  image: dockerizedrupal/zabbix-frontend-php:0.1.4
+  image: dockerizedrupal/zabbix-frontend-php:0.1.5
   hostname: zabbix-frontend-php-data
   entrypoint: ["/bin/echo", "Data-only container for Zabbix Web Frontend."]
   volumes:

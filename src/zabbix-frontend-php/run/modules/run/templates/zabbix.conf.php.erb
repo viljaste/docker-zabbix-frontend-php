@@ -3,11 +3,11 @@
 global $DB;
 
 $DB["TYPE"] = 'MYSQL';
-$DB["SERVER"] = '<%= @mysqld_host %>';
+$DB["SERVER"] = '<%= @mysql_host %>';
 $DB["PORT"] = '<%= @mysql_port %>';
 $DB["DATABASE"] = 'zabbix';
-$DB["USER"] = '<%= @mysqld_username %>';
-$DB["PASSWORD"] = '<%= @mysqld_password %>';
+$DB["USER"] = '<%= @mysql_username %>';
+$DB["PASSWORD"] = '<%= @mysql_password %>';
 // SCHEMA is relevant only for IBM_DB2 database
 $DB["SCHEMA"] = '';
 

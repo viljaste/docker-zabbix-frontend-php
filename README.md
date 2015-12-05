@@ -30,7 +30,7 @@ A Docker image for [Zabbix](http://www.zabbix.com/) Web Frontend. Also supports 
       -h "${CONTAINER}" \
       -v /zabbix_frontend_php \
       --entrypoint /bin/echo \
-      dockerizedrupal/zabbix-frontend-php:0.1.4 "Data-only container for Zabbix Web Frontend."
+      dockerizedrupal/zabbix-frontend-php:0.1.5 "Data-only container for Zabbix Web Frontend."
 
     CONTAINER="zabbix-frontend-php" && sudo docker run \
       --name "${CONTAINER}" \
@@ -38,17 +38,18 @@ A Docker image for [Zabbix](http://www.zabbix.com/) Web Frontend. Also supports 
       -p 80:80 \
       -p 443:443 \
       --volumes-from zabbix-frontend-php-data \
+      --link mysql:mysql \
       --link zabbix-server:zabbix-server \
       -d \
-      dockerizedrupal/zabbix-frontend-php:0.1.4
+      dockerizedrupal/zabbix-frontend-php:0.1.5
 
 ## Build the image
 
     TMP="$(mktemp -d)" \
       && git clone https://github.com/dockerizedrupal/docker-zabbix-frontend-php.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout 0.1.4 \
-      && sudo docker build -t dockerizedrupal/zabbix-frontend-php:0.1.4 . \
+      && git checkout 0.1.5 \
+      && sudo docker build -t dockerizedrupal/zabbix-frontend-php:0.1.5 . \
       && cd -
       
 ## Changing the container behaviour on runtime through environment variables
