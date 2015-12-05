@@ -1,10 +1,30 @@
-zabbixfrontendphp:
-  image: viljaste/zabbix_frontend_php:latest
-  hostname: zabbixfrontendphp
+zabbix-frontend-php:
+  image: dockerizedrupal/zabbix-frontend-php:0.1.0
+  hostname: zabbix-frontend-php
   ports:
     - "80:80"
     - "443:443"
-  environment:
-    - SERVER_NAME=localhost
-    - PROTOCOLS=https,http
-    - PHP_INI_TIMEZONE=UTC
+  links:
+    - zabbix-server
+zabbix-frontend-php-data:
+  image: dockerizedrupal/zabbix-frontend-php:0.1.0
+  hostname: zabbix-frontend-php-data
+  entrypoint: ["/bin/echo", "Data-only container for Zabbix Web Frontend."]
+  volumes:
+    - /zabbix_frontend_php
+zabbix-server:
+  image: dockerizedrupal/zabbix-server:0.1.5
+  hostname: zabbix-server
+  links:
+    - mysql
+mysql:
+  image: dockerizedrupal/mysql:1.1.0
+  hostname: mysql
+  volumes_from:
+    - mysql-data
+mysql-data:
+  image: dockerizedrupal/mysql:1.1.0
+  hostname: mysql-data
+  entrypoint: ["/bin/echo", "Data-only container for MySQL."]
+  volumes:
+    - /mysql

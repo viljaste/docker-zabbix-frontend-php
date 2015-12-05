@@ -1,0 +1,33 @@
+<IfModule mod_ssl.c>
+  <VirtualHost *:443>
+    DocumentRoot /usr/share/zabbix
+
+    <Directory "/usr/share/zabbix">
+<% if @indexes == "On" -%>
+      Options +Indexes
+<% else -%>
+      Options -Indexes
+<% end -%>
+      AllowOverride All
+<% if @http_basic_auth == "On" -%>
+      AuthType Basic
+      AuthName "Authentication Required"
+      AuthUserFile "/etc/htpasswd/.htpasswd"
+      Require valid-user
+<% else -%>
+      Order allow,deny
+      Allow from all
+<% end -%>
+    </Directory>
+
+    Header add Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+    SSLEngine on
+    SSLProtocol ALL -SSLv2 -SSLv3
+    SSLHonorCipherOrder On
+    SSLCipherSuite ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS
+
+    SSLCertificateFile /zabbix_frontend_php/ssl/certs/zabbix_frontend_php.crt
+    SSLCertificateKeyFile /zabbix_frontend_php/ssl/private/zabbix_frontend_php.key
+  </VirtualHost>
+</IfModule>

@@ -1,0 +1,21 @@
+<VirtualHost *:80>
+  DocumentRoot /usr/share/zabbix
+
+  <Directory "/usr/share/zabbix">
+<% if @indexes == "On" -%>
+    Options +Indexes
+<% else -%>
+    Options -Indexes
+<% end -%>
+    AllowOverride All
+<% if @http_basic_auth == "On" -%>
+    AuthType Basic
+    AuthName "Authentication Required"
+    AuthUserFile "/etc/htpasswd/.htpasswd"
+    Require valid-user
+<% else -%>
+    Order allow,deny
+    Allow from all
+<% end -%>
+  </Directory>
+</VirtualHost>

@@ -1,2 +1,0 @@
-ErrorLog /var/log/apache2/stderr.log
-CustomLog /var/log/apache2/stdout.log combined
